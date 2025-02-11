@@ -9,6 +9,7 @@ let inventory = ["palo"];
 const button1 = document.querySelector('#button1');
 const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
+const inventoryDisplay = document.getElementById("inventory-list");
 const text = document.querySelector("#text");
 const xpText = document.querySelector("#xpText");
 const healthText = document.querySelector("#healthText");
@@ -104,7 +105,17 @@ function update(location) {
   button2.onclick = location["button functions"][1];
   button3.onclick = location["button functions"][2];
   text.innerHTML = location.text;
+  //pop.innerHTML = "En tu inventario tienes:\n" + inventory;
 }
+function updateInventory() {
+  if (inventory.length === 0) {
+    inventoryDisplay.innerHTML = "Inventario vacío";
+  } else {
+    inventoryDisplay.innerHTML = "Inventario<br><br>";
+    inventoryDisplay.innerHTML += inventory.map(item => `🗡️ ${item}`).join("<br>");
+  }
+}
+document.getElementById("inv").addEventListener("click", updateInventory);
 
 function goTown() {
   update(locations[0]);
@@ -132,6 +143,7 @@ function buyHealth() {
 function buyWeapon() {
   if (currentWeapon < weapons.length - 1) {
     if (gold >= 30) {
+      
       gold -= 30;
       currentWeapon++;
       goldText.innerText = gold;
@@ -269,16 +281,16 @@ function pick(guess) {
   while (numbers.length < 10) {
     numbers.push(Math.floor(Math.random() * 11));
   }
-  text.innerText = "Escogiste " + guess + ". \n\nEstos son los numeros aleatrios generados:\n\n";
+  text.innerText = "Escogiste " + guess + ". \nEstos son los numeros aleatrios generados:\n";
   for (let i = 0; i < 10; i++) {
     text.innerText += numbers[i] + "\n";
   }
   if (numbers.includes(guess)) {
-    text.innerText += "\n\nAcertaste! ganas 20 de plata.";
+    text.innerText += "\nAcertaste! ganas 20 de plata.";
     gold += 20;
     goldText.innerText = gold;
   } else {
-    text.innerText += "\n\nPerdiste! pierdes 10 de vida.";
+    text.innerText += "\nPerdiste! pierdes 10 de vida.";
     health -= 10;
     healthText.innerText = health;
     if (health <= 0) {
