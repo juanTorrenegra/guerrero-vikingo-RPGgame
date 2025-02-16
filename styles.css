@@ -6,7 +6,7 @@ body {
     background: #6b6b6b; /* Color gris piedra */
     border: 10px solid #5a5a5a;
     box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
-    color: rgb(197, 188, 180);
+    color: rgb(229, 223, 217);
     padding: 70px;
     text-align:center;
     
@@ -63,10 +63,10 @@ body {
 }
 #titulo {
   text-align:center;
-  color:darkgray;
+  color:rgb(66, 66, 66);
   font-family: 'Flesh' ,sans-serif;
   font-size:40px;
-  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.9);
+  text-shadow: 5px 5px 5px rgba(160, 208, 153, 0.9);
 }
 #inv {
   color:rgb(227, 204, 204);
